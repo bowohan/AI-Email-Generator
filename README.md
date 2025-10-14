@@ -277,21 +277,6 @@ npm run preview      # Preview production build
 1. Build the application: `npm run build`
 2. Deploy the `dist` folder to your hosting service
 
-## Performance
-
-- **Response Time**: < 800ms for CRUD operations
-- **Caching**: Efficient data fetching
-- **Pagination**: Large datasets handled efficiently
-- **Error Handling**: Graceful degradation
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
-
 ## Future Enhancements
 
 - **Real Authentication**: Implement actual JWT authentication
