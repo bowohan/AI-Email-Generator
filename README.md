@@ -72,13 +72,6 @@ A full-stack application for generating AI-powered emails with different tones a
 - **Evaluation**: Quality evaluation system
 - **Safety**: Input sanitization and error handling
 
-### Non-Functional Requirements
-- **Accessibility**: Basic accessibility features
-- **Performance**: Optimized for < 800ms response times
-- **Security**: No secrets in repo, input sanitization, CORS
-- **Testing**: Comprehensive test suite
-- **Documentation**: Complete API documentation
-
 ## Quick Start
 
 ### Prerequisites
@@ -298,10 +291,6 @@ npm run preview      # Preview production build
 3. Make your changes
 4. Add tests if applicable
 5. Submit a pull request
-
-## License
-
-MIT License - see LICENSE file for details
 
 ## Future Enhancements
 
