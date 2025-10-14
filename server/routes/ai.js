@@ -296,31 +296,25 @@ ${closing},
       return content;
     };
 
-    // Use mock response if OpenAI fails
-    let generatedContent;
-    try {
-      const completion = await openai.chat.completions.create({
-        model: "gpt-3.5-turbo",
-        messages: [
-          {
-            role: "system",
-            content: "You are an expert email writer. Generate professional, engaging emails based on the user's requirements."
-          },
-          {
-            role: "user",
-            content: prompt
-          }
-        ],
-        max_tokens: 1000,
-        temperature: 0.7,
-      });
+    // Generate email using OpenAI API
+    const completion = await openai.chat.completions.create({
+      model: "gpt-3.5-turbo",
+      messages: [
+        {
+          role: "system",
+          content: "You are an expert email writer. Generate professional, engaging emails based on the user's requirements."
+        },
+        {
+          role: "user",
+          content: prompt
+        }
+      ],
+      max_tokens: 1000,
+      temperature: 0.7,
+    });
 
-      generatedContent = completion.choices[0].message.content;
-    } catch (error) {
-      console.log("OpenAI API failed, using dynamic mock response:", error.message);
-      // Generate dynamic mock response based on user input
-      generatedContent = generateMockEmail(subject, tone, purpose, recipient, length);
-    }
+    const generatedContent = completion.choices[0].message.content;
+    console.log("✅ OpenAI API SUCCESS - Email generated with AI");
 
     // Save to database if userId is provided
     let savedEmail = null;
