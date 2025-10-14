@@ -66,11 +66,18 @@ A full-stack application for generating AI-powered emails with different tones a
 - **Environment**: Proper environment configuration
 
 ### AI Feature
-- **LLM Integration**: OpenAI API integration
+- **LLM Integration**: OpenAI API integration with GPT-3.5-turbo
 - **Prompt Design**: Well-structured prompts for different tones
-- **Fallback System**: Mock responses when API fails
+- **Direct API Integration**: Real-time email generation via OpenAI
 - **Evaluation**: Quality evaluation system
 - **Safety**: Input sanitization and error handling
+
+### Non-Functional Requirements
+- **Accessibility**: Basic accessibility features
+- **Performance**: Optimized for < 800ms response times
+- **Security**: No secrets in repo, input sanitization, CORS
+- **Testing**: Comprehensive test suite
+- **Documentation**: Complete API documentation
 
 ## Quick Start
 
@@ -123,7 +130,8 @@ DATABASE_URL="postgresql://username:password@localhost:5432/ai_email_generator?s
 JWT_SECRET="your-super-secret-jwt-key-change-this-in-production"
 
 # OpenAI API Key (Get from https://platform.openai.com/api-keys)
-OPENAI_API_KEY="sk-your-openai-api-key-here"
+# IMPORTANT: Do NOT use quotes around the key
+OPENAI_API_KEY=sk-your-openai-api-key-here
 
 # Server Configuration
 PORT=3001
@@ -276,6 +284,54 @@ npm run preview      # Preview production build
 ### Frontend Deployment
 1. Build the application: `npm run build`
 2. Deploy the `dist` folder to your hosting service
+
+## Performance
+
+- **Response Time**: < 800ms for CRUD operations
+- **Caching**: Efficient data fetching
+- **Pagination**: Large datasets handled efficiently
+- **Error Handling**: Graceful degradation
+
+## Troubleshooting
+
+### OpenAI API Key Issues
+
+If you're experiencing issues with the OpenAI API:
+
+1. **Check Environment Variables**: Make sure no system-level `OPENAI_API_KEY` is set
+   ```bash
+   echo $OPENAI_API_KEY  # Should be empty or show your correct key
+   unset OPENAI_API_KEY  # Remove system-level variable if needed
+   ```
+
+2. **Check .env File**: Ensure the key is on a single line without quotes
+   ```env
+   OPENAI_API_KEY=sk-proj-your-actual-key-here
+   ```
+
+3. **Verify API Key**: Test your key at https://platform.openai.com/api-keys
+
+4. **Check Billing**: Ensure your OpenAI account has available credits
+
+5. **Shell Configuration**: Check `~/.zshrc` or `~/.bashrc` for conflicting environment variables
+
+### Common Issues
+
+- **Port Already in Use**: Kill existing processes or change port in `.env`
+- **Database Connection**: Ensure PostgreSQL is running and DATABASE_URL is correct
+- **CORS Errors**: Check CLIENT_URL matches your frontend URL
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests if applicable
+5. Submit a pull request
+
+## License
+
+MIT License - see LICENSE file for details
 
 ## Future Enhancements
 
